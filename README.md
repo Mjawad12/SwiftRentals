@@ -1,6 +1,6 @@
 # SwiftRental - Car Rental Website
 
-![Project Logo](/swiftrentals/FrontEnd/src/components/img/logojpg) <!-- If you have a project logo, include it here -->
+![Project Logo](/swiftrentals/FrontEnd/src/components/img/logo.jpg) <!-- If you have a project logo, include it here -->
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/yourusername/SwiftRental)](https://github.com/yourusername/SwiftRental/stargazers)
