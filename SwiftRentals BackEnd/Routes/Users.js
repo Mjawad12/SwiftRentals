@@ -46,9 +46,12 @@ router.post(
       });
 
       if (user.verification === "NO") {
+        console.log("entered");
         const otp_no = otp();
         SendMail(user.email, otp_no)
-          .then(() => {})
+          .then(() => {
+            console.log("success");
+          })
           .catch((error) => {
             console.log(error.message);
           });
@@ -89,9 +92,12 @@ router.post(
       }
 
       if (user.verification === "NO") {
+        console.log("entered");
         const otp_no = otp();
         SendMail(user.email, otp_no)
-          .then(() => {})
+          .then(() => {
+            console.log("success");
+          })
           .catch((err) => {
             return res.status(400).send({ error: err.message });
           });
