@@ -1,9 +1,9 @@
 const db = require("mongoose");
 
+require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
+
 const connectToDb = () => {
-  db.connect(
-    "mongodb+srv://SwiftRentals_Main:RentalSwift156jaw@swiftrentals.pm3mdfi.mongodb.net/SwiftRentals"
-  )
+  db.connect(process.env.Connection_string)
     .then(() => {
       console.log("Connected to Db");
     })
