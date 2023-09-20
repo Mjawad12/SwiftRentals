@@ -1,7 +1,9 @@
 const db = require("mongoose");
 
 const connectToDb = () => {
-  db.connect("mongodb://127.0.0.1:27017/SwiftRentals")
+  db.connect(
+    "mongodb+srv://SwiftRentals_Main:RentalSwift156jaw@swiftrentals.pm3mdfi.mongodb.net/SwiftRentals"
+  )
     .then(() => {
       console.log("Connected to Db");
     })

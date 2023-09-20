@@ -5,7 +5,7 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const fetchuser = require("../MiddleWare/fetchuser");
-require("dotenv").config({ path: path.resolve(__dirname, "../Routes/.env") });
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const { body, validationResult } = require("express-validator");
 const mailer = require("../MiddleWare/sendmail");
 const { SendMail, otp } = mailer;
