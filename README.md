@@ -46,6 +46,7 @@ This project is a full-stack web application designed to showcase my skills in w
    <b>I'm passionate about web development and have a strong foundation in creating dynamic and user-friendly web applications. </b>
 
    <h2>My Skills</h2>
+
    ### Frontend Development:
    HTML, CSS, JavaScript, React.
    
