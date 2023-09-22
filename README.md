@@ -35,6 +35,7 @@ This project is a full-stack web application designed to showcase my skills in w
 - <h2>Sending Otp Emails:</h2> The app is also capable to send email to users which consist of an OTP code to authenticate users.
 
 
+
 ## Demo
 
 - https://swift-rentals.vercel.app/
