@@ -362,15 +362,15 @@ i {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 2s ease-in-out;
+  transition: all 2s;
 }
 .animate {
-  animation: animation 1s 1;
+  animation: animation 0.7s 1;
   animation-direction: alternate;
   left: 0;
 }
 .animate-reverse {
-  animation: animation-reverse 0.5s 1;
+  animation: animation-reverse 0.3s 1;
   animation-direction: alternate;
   left: -100%;
 }
@@ -513,7 +513,7 @@ section.main img {
 /* Book car */
 #Book {
   gap: 3rem;
-  background-image: url("./components/img/formbackground\ pattern\ white.jpg");
+  background-image: url("./components/img/formbackground\ pattern\ white-min.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -851,7 +851,7 @@ div.save span {
   color: var(--clr-neutral-400);
 }
 .bg-img {
-  background-image: url(./components/img/car\ FAq.png);
+  background-image: url(./components/img/car\ FAq-min.png);
   background-position: 6rem;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1234,7 +1234,7 @@ i#Totop {
 .Top {
   justify-content: flex-start;
   align-items: center;
-  background-image: url("./components/img/ryan-spencer-c-NEiPIxpYI-unsplash.jpg");
+  background-image: url("./components/img/ryan-spencer-c-NEiPIxpYI-unsplash-min.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1593,7 +1593,7 @@ i#Totop {
   z-index: 1;
   min-width: 34rem;
   min-height: 64rem;
-  background-image: url("./components/img/Png/jeep-orange.jpeg");
+  background-image: url("./components/img/Png/jeep-orange-min.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: -20rem;
@@ -1754,7 +1754,7 @@ i#Totop {
   transform: translate(122.5%);
 }
 
-@media (min-width: 75em) {
+@media (min-width: 70em) {
   .ReservationTab {
     max-width: 45%;
     width: 100%;
@@ -1778,5 +1778,36 @@ i#Totop {
 @media (max-width: 30em) {
   .Top-bar-reservation h2 {
     font-size: var(--size-600) !important;
+  }
+}
+
+/*  Loading */
+
+.loadingMain {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.5s all ease;
+}
+.loadingMain.showloading {
+  opacity: 1;
+}
+
+.loading-component {
+  padding: 7rem;
+  background-color: transparent;
+  border: 10px solid var(--clr-primary-100);
+  border-top: 10px solid #000000c0;
+  border-radius: 100vw;
+  animation: loadinganimation 0.9s normal infinite;
+}
+
+@keyframes loadinganimation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

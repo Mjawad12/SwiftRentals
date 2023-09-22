@@ -10,6 +10,7 @@ const { body, validationResult } = require("express-validator");
 const mailer = require("../MiddleWare/sendmail");
 const { SendMail, otp } = mailer;
 const JWT_String = process.env.Secret_string;
+
 // create a user and get an authentication code  : : : sign up
 router.post(
   "/createuser",
@@ -48,13 +49,13 @@ router.post(
       if (user.verification === "NO") {
         console.log("entered");
         const otp_no = otp();
-        SendMail(user.email, otp_no)
-          .then(() => {
-            console.log("success");
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
+        // SendMail(user.email, otp_no)
+        //   .then(() => {
+        //     console.log("success");
+        //   })
+        //   .catch((error) => {
+        //     console.log(error.message);
+        //   });
 
         return res.status(200).send({ otp: otp_no });
       } else {
@@ -71,7 +72,7 @@ router.post(
   }
 );
 
-// verify user and get an authentication token   : : : sign up
+// verify user and get an authentication token   : : : sign in
 
 router.post(
   "/signin",
@@ -94,13 +95,13 @@ router.post(
       if (user.verification === "NO") {
         console.log("entered");
         const otp_no = otp();
-        SendMail(user.email, otp_no)
-          .then(() => {
-            console.log("success");
-          })
-          .catch((err) => {
-            return res.status(400).send({ error: err.message });
-          });
+        // SendMail(user.email, otp_no)
+        //   .then(() => {
+        //     console.log("success");
+        //   })
+        //   .catch((err) => {
+        //     return res.status(400).send({ error: err.message });
+        //   });
 
         return res.status(200).send({ otp: otp_no });
       } else {

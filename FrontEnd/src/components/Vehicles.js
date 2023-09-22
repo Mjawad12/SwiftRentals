@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Car from "./cars copy.json";
-import Audi from "./img/Png/Cars/Audi A4.png";
-import Lexus from "./img/Png/Cars/Lexus ES.png";
-import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class.png";
-import Volvo from "./img/Png/Cars/Volvo S60.png";
-import Vw from "./img/Png/Cars/Vw golf 6.png";
+import Audi from "./img/Png/Cars/Audi A4-min.png";
+import Lexus from "./img/Png/Cars/Lexus ES-min.png";
+import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class-min.png";
+import Volvo from "./img/Png/Cars/Volvo S60-min.png";
+import Vw from "./img/Png/Cars/Vw golf 6-min.png";
 export default function Vehicles() {
   const [cars, setcars] = useState();
   useEffect(() => {

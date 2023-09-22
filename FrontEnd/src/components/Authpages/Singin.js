@@ -1,7 +1,9 @@
 import React from "react";
 import { useContext, useState, useRef, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import Context from "../../context/Context";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Loading from "../Loading";
 export default function Singin() {
   const [err2, seterr2] = useState("");
   const [err3, seterr3] = useState("");
@@ -9,8 +11,17 @@ export default function Singin() {
   const navigate = useNavigate();
   const email = useRef("unknown@gmail.com");
   const password = useRef("xxxxxxxxx");
-  const { signin, errors, seterrors, authtoken, otpverifier, setotpverifier } =
-    context;
+  const form = useRef("");
+  const {
+    signin,
+    errors,
+    seterrors,
+    otp,
+    otpverifier,
+    setotpverifier,
+    loading,
+    setloading,
+  } = context;
   const location = useLocation();
   const tablet = document.querySelector(".tablet-top");
   if (location.pathname === "/signin") {
@@ -47,6 +58,25 @@ export default function Singin() {
   useEffect(() => {
     if (otpverifier === "YES") {
       navigate("/verifyotp");
+      const templateParams = {
+        to_name: email.current.value,
+        user_email: email.current.value,
+        message: `Your otp code is ${otp}`,
+        from_name: "SwiftREntals",
+      };
+      emailjs
+        .send(
+          "service_op5mypk",
+          "template_pslst65",
+          templateParams,
+          "fsNlf011wAWaX2zIF"
+        )
+        .then(() => {
+          console.log("success");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       setotpverifier("NO");
     }
   }, [otpverifier]);
@@ -55,6 +85,8 @@ export default function Singin() {
     const emailvalue = email.current.value;
     const passwordvalue = password.current.value;
     signin(emailvalue, passwordvalue);
+    if (otpverifier === "YES") {
+    }
     seterr2("");
     seterr3("");
   };
@@ -94,6 +126,7 @@ export default function Singin() {
                 <i className="fa-solid fa-circle-exclamation"> </i> {err3}
               </p>
             )}
+
             <p>
               Forgot password?{" "}
               <Link className="text-primary-color" to="">
@@ -108,6 +141,9 @@ export default function Singin() {
               <i className="fa-brands fa-google"></i>
             </div>
           </div>
+          {loading === "true" && (
+            <Loading loading={loading} padding={1}></Loading>
+          )}
           <button className="button" onClick={handleSignin}>
             Sign in
           </button>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Context from "./Context";
 import React from "react";
-const url = "http://localhost:5500/api/";
+const url = "https://better-blue-adder.cyclic.cloud/api/";
 
 export default function MainState(props) {
   const [authtoken, setauthtoken] = useState(localStorage.getItem("authtoken"));
@@ -12,11 +12,13 @@ export default function MainState(props) {
   const [clientEmail, setclientEmail] = useState("");
   const [Reservation, setReservation] = useState("");
   const [Reservation_data, setReservation_data] = useState("");
+  const [loading, setloading] = useState("");
 
   //                sign up function
 
   const signup = async (name, email, password) => {
     localStorage.clear();
+    setloading("true");
     const response = await fetch(`${url}createuser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,7 +26,7 @@ export default function MainState(props) {
     });
 
     const parsed_Response = await response.json();
-
+    setloading("false");
     if (parsed_Response.otp !== undefined) {
       setotpverifier("YES");
       setclientEmail(email);
@@ -42,12 +44,14 @@ export default function MainState(props) {
 
   const signin = async (email, password) => {
     localStorage.clear();
+    setloading("true");
     const response = await fetch(`${url}signin`, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
     const parsed_Response = await response.json();
+    setloading("false");
 
     if (parsed_Response.otp !== undefined) {
       setotpverifier("YES");
@@ -73,18 +77,21 @@ export default function MainState(props) {
       },
     });
     const parsed_Response = await response.json();
+
     setclientEmail(parsed_Response.email);
     parsed_Response && setuserData(parsed_Response);
   };
 
   //                      Verify OTP
   const verifyOtp = async (email) => {
+    setloading("true");
     const response = await fetch(`${url}verifyOTP`, {
       method: "Post",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ email: email }),
     });
     const parsed_Response = await response.json();
+    setloading("false");
     if (parsed_Response.authtoken !== undefined) {
       await seterrors(undefined);
       await setauthtoken(parsed_Response.authtoken);
@@ -106,6 +113,8 @@ export default function MainState(props) {
     address
   ) => {
     setReservation("");
+    seterrors("");
+    setloading("true");
     const response = await fetch(`${url}reserv/createReservation`, {
       method: "Post",
       headers: {
@@ -127,6 +136,7 @@ export default function MainState(props) {
     });
 
     const parsed_Response = await response.json();
+    setloading("false");
     if (parsed_Response.error !== undefined) {
       seterrors(parsed_Response.error);
     } else {
@@ -137,6 +147,7 @@ export default function MainState(props) {
 
   const getReservation = async () => {
     setReservation_data("");
+    setloading("true");
     const response = await fetch(`${url}reserv/getReservations`, {
       method: "Get",
       headers: {
@@ -145,12 +156,13 @@ export default function MainState(props) {
       },
     });
     const parsed_Response = await response.json();
+    setloading("false");
     setReservation_data(parsed_Response.Reservation);
   };
 
   //  cancel Reservation
   const cancelReservation = async (Reservation_id) => {
-    const response = await fetch(`${url}reserv/cancelReservation`, {
+    await fetch(`${url}reserv/cancelReservation`, {
       method: "Delete",
       headers: {
         authtoken: localStorage.getItem("authtoken"),
@@ -182,6 +194,8 @@ export default function MainState(props) {
         Reservation_data,
         getReservation,
         cancelReservation,
+        loading,
+        setloading,
       }}
     >
       {props.elements}

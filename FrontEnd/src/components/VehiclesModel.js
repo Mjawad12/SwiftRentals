@@ -1,31 +1,31 @@
 import React from "react";
 import "../App.css";
-import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class.png";
-import AudiA4 from "./img/Png/Cars/Audi A4.png";
-import LexusES from "./img/Png/Cars/Lexus ES.png";
-import VolvoS60 from "./img/Png/Cars/Volvo S60.png";
-import VWgolf from "./img/Png/Cars/Vw golf 6.png";
+import Audi from "./img/Png/Cars/Audi A4-min.png";
+import Lexus from "./img/Png/Cars/Lexus ES-min.png";
+import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class-min.png";
+import Volvo from "./img/Png/Cars/Volvo S60-min.png";
+import Vw from "./img/Png/Cars/Vw golf 6-min.png";
 import cardata from "./cars.json";
 import { useState } from "react";
 export default function VehiclesModel() {
   const [car] = useState(cardata);
   const [carname, setcarname] = useState("AudiA4");
-  const [carimg, setcarimg] = useState(AudiA4);
+  const [carimg, setcarimg] = useState(Audi);
   const HandleClick = (e) => {
     if (e.target.textContent === "Audi S1 Line") {
-      setcarimg(AudiA4);
+      setcarimg(Audi);
       setcarname("AudiA4");
     } else if (e.target.textContent === "Lexus ES") {
-      setcarimg(LexusES);
+      setcarimg(Lexus);
       setcarname("LexusES");
     } else if (e.target.textContent === "Mercedes-Benz C-Class") {
       setcarimg(Mercedes);
       setcarname("Mercedes");
     } else if (e.target.textContent === "Volvo S60") {
-      setcarimg(VolvoS60);
+      setcarimg(Volvo);
       setcarname("VolvoS60");
     } else if (e.target.textContent === "Vw Golf 6") {
-      setcarimg(VWgolf);
+      setcarimg(Vw);
       setcarname("VWgolf");
     }
   };

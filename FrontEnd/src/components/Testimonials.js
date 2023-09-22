@@ -151,7 +151,7 @@ export default function Testimonials() {
                 website was user-friendly, the rental choices were diverse, and
                 the booking process was hassle-free. The property exceeded
                 expectations, making my vacation truly memorable. Highly
-                recommend!" -Sarah
+                recommend!" -Richard
               </span>
             </p>
             <div className="ReviewPerson">

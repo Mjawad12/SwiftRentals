@@ -1,9 +1,9 @@
 import React from "react";
 import Top from "./Top";
-import carPic from "./img/ryan-spencer-c-NEiPIxpYI-unsplash.jpg";
+import carPic from "./img/ryan-spencer-c-NEiPIxpYI-unsplash-min.jpg";
 import carpic2 from "./img/Bookformpic.jpg";
-import carpic3 from "./img/joey-banks-YApiWyp0lqo-unsplash.jpg";
-import carpic4 from "./img/hyundai-motor-group-P45K3ewrATs-unsplash.jpg";
+import carpic3 from "./img/joey-banks-YApiWyp0lqo-unsplash-min.jpg";
+import carpic4 from "./img/hyundai-motor-group-P45K3ewrATs-unsplash-min.jpg";
 import Faq from "./Faq";
 import Footer from "./Footer";
 export default function About() {

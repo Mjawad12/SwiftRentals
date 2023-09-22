@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "./img/Png/logo SwiftREntals.png";
+import logo from "./img/Png/logo SwiftREntals-min.png";
 import Context from "../context/Context";
 import DialogLogout from "./Authpages/dialogLogout";
 import ReservationTab from "./ReservationTab";
@@ -12,7 +12,8 @@ export default function Navbar() {
     fetchdata,
     userData,
     setauthtoken,
-    errors,
+    loading,
+    setloading,
     getReservation,
   } = context;
   const location = useLocation();

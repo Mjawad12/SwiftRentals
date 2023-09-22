@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import Context from "../../context/Context";
+import Loading from "../Loading";
+
 export default function Signup() {
   const [err1, seterr1] = useState("");
   const [err2, seterr2] = useState("");
@@ -12,8 +15,15 @@ export default function Signup() {
   const name = useRef("unknown");
   const email = useRef("unknown@gmail.com");
   const password = useRef("xxxxxxxxx");
-  const { signup, errors, seterrors, authtoken, otpverifier, setotpverifier } =
-    context;
+  const {
+    signup,
+    errors,
+    seterrors,
+    otp,
+    otpverifier,
+    setotpverifier,
+    loading,
+  } = context;
   const location = useLocation();
   const tablet = document.querySelector(".tablet-top");
   if (location.pathname === "/signup") {
@@ -50,6 +60,25 @@ export default function Signup() {
   useEffect(() => {
     if (otpverifier === "YES") {
       navigate("/verifyotp");
+      const templateParams = {
+        to_name: email.current.value,
+        user_email: email.current.value,
+        message: `Your otp code is ${otp}`,
+        from_name: "SwiftREntals",
+      };
+      emailjs
+        .send(
+          "service_op5mypk",
+          "template_pslst65",
+          templateParams,
+          "fsNlf011wAWaX2zIF"
+        )
+        .then(() => {
+          console.log("success");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       setotpverifier("NO");
     }
   }, [otpverifier]);
@@ -120,6 +149,9 @@ export default function Signup() {
                 <i className="fa-brands fa-google"></i>
               </div>
             </div>
+            {loading === "true" && (
+              <Loading loading={loading} padding={1}></Loading>
+            )}
             <button className="button" onClick={handleSignup}>
               Sign up
             </button>

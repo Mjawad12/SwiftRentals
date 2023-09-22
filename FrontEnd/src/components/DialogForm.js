@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import background from "./img/Png/formbackground.png";
-import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class.png";
-import AudiA4 from "./img/Png/Cars/Audi A4.png";
-import LexusES from "./img/Png/Cars/Lexus ES.png";
-import VolvoS60 from "./img/Png/Cars/Volvo S60.png";
-import Vw from "./img/Png/Cars/Vw golf 6.png";
+import background from "./img/Png/formbackground-min.png";
+import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class-min.png";
+import AudiA4 from "./img/Png/Cars/Audi A4-min.png";
+import LexusES from "./img/Png/Cars/Lexus ES-min.png";
+import VolvoS60 from "./img/Png/Cars/Volvo S60-min.png";
+import Vw from "./img/Png/Cars/Vw golf 6-min.png";
 import Context from "../context/Context";
+import Loading from "./Loading";
+import emailjs from "@emailjs/browser";
 
 const DialogForm = React.forwardRef((props, ref) => {
   const context = useContext(Context);
@@ -24,10 +26,12 @@ const DialogForm = React.forwardRef((props, ref) => {
     clientEmail,
     setReservation,
     Reservation,
+    loading,
   } = context;
   const [imag, setimag] = useState();
 
   const HandleClick = () => {
+    window.scrollTo(0, 600);
     if (localStorage.getItem("authtoken") !== null) {
       createReservation(
         clientEmail,
@@ -42,14 +46,13 @@ const DialogForm = React.forwardRef((props, ref) => {
         Address.current.value
       )
         .then(() => {})
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch(() => {});
     } else {
       props.SetAlert({ msg: "Please Create an account to make a Reservation" });
       HandleClose();
     }
   };
+
   useEffect(() => {
     seterr1("");
     seterr2("");
@@ -69,8 +72,34 @@ const DialogForm = React.forwardRef((props, ref) => {
       }
     }
   }, [errors]);
+
   useEffect(() => {
     if (Reservation.msg !== undefined) {
+      const templateParams = {
+        to_name: clientEmail,
+        user_email: clientEmail,
+        message: `SwiftRentals
+        I hope this message finds you well. I wanted to express my sincere gratitude for your interest in SwiftRentals and for considering us for your car rental needs.
+        To clarify, SwiftRentals is primarily a platform designed for showcasing my portfolio as a web developer and designer. It is not a real car rental service. Your reservation request, while not applicable in this context, is genuinely appreciated as it allows me to demonstrate the user experience and functionality of the website.
+        Your interest means a lot to me, and I'm here to answer any questions you might have about the website, its features, or any other inquiries related to my portfolio .Please feel free to reach out with any queries, and I'll be more than happy to assist you.
+        Best regards,
+        swiftrentalsofficial@gmail.com`,
+        from_name: "SwiftREntals",
+      };
+      emailjs
+        .send(
+          "service_op5mypk",
+          "template_iqtbi5w",
+          templateParams,
+          "fsNlf011wAWaX2zIF"
+        )
+        .then(() => {
+          console.log("success");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log("hello");
       HandleClose();
       props.SetAlert({ msg: Reservation.msg });
       setReservation("");
@@ -168,7 +197,14 @@ const DialogForm = React.forwardRef((props, ref) => {
             <img alt="" src={imag}></img>
           </div>
         </div>
-        <img alt="" src={background} className="bd"></img>
+        <img
+          alt=""
+          src={
+            "https://ik.imagekit.io/jlyn85pm1/SWiftRentals/formbackground-min.png?updatedAt=1695364935188" ||
+            background
+          }
+          className="bd"
+        ></img>
         <hr className="main" />
         <div className="bottom | even-columns opposite-columns padding-block-600">
           <h3>Personal Information</h3>
@@ -254,6 +290,9 @@ const DialogForm = React.forwardRef((props, ref) => {
               <i className="fa-solid fa-circle-exclamation"></i>
               {err4}
             </p>
+          )}
+          {loading === "true" && (
+            <Loading loading={loading} padding={1}></Loading>
           )}
           <button onClick={HandleClick} className="button Submit">
             Submit

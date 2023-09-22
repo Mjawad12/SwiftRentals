@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import img from "./img/car FAq.png";
 export default function Faq() {
   const pref = useRef(0);
   const p2ref = useRef(0);

@@ -25,7 +25,15 @@ oAuth2CLient.setCredentials({
 
 const SendMail = async (clientMail, otp) => {
   try {
-    const accessToken = await oAuth2CLient.getAccessToken();
+    console.log(clientMail);
+    const accessToken = await oAuth2CLient
+      .getAccessToken()
+      .then(() => {
+        console.log("yes");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
     const transport = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -37,6 +45,7 @@ const SendMail = async (clientMail, otp) => {
         accessToken: accessToken,
       },
     });
+
     if (otp !== undefined) {
       const mailoptions = {
         from: "SwiftRentals 🚗 <swiftrentalsofficial@gmail.com> ",
@@ -45,9 +54,10 @@ const SendMail = async (clientMail, otp) => {
         text: `Your code is ${otp}`,
         html: `<h1>SwiftRentals</h1> <h2>Code:</h2><h3>Your code is ${otp}</h3>`,
       };
-      const result = await transport.sendMail(mailoptions);
-      return result;
+
+      const result = transport.sendMail(mailoptions);
     } else {
+      console.log("Entered 4");
       const mailoptions = {
         from: "SwiftRentals 🚗 <swiftrentalsofficial@gmail.com> ",
         to: clientMail,
@@ -64,11 +74,11 @@ const SendMail = async (clientMail, otp) => {
       const result = await transport.sendMail(mailoptions);
     }
   } catch (error) {
-    return "Enter a valid Email", error;
+    console.log("Enter a valid Email", error.message);
   }
 };
 
 module.exports = {
-  SendMail: SendMail,
+  // SendMail: SendMail,
   otp: Otpcreator,
 };

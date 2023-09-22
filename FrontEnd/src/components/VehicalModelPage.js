@@ -1,5 +1,4 @@
 import React from "react";
-import VehiclesModel from "./VehiclesModel";
 import Save from "./Save";
 import Faq from "./Faq";
 import Footer from "./Footer";

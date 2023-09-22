@@ -1,14 +1,14 @@
 import React, { useContext, useRef } from "react";
-import AudiA4 from "./img/Png/Cars/Audi A4.png";
-import LexusES from "./img/Png/Cars/Lexus ES.png";
-import VolvoS60 from "./img/Png/Cars/Volvo S60.png";
-import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class.png";
-import Vw from "./img/Png/Cars/Vw golf 6.png";
+import AudiA4 from "./img/Png/Cars/Audi A4-min.png";
+import LexusES from "./img/Png/Cars/Lexus ES-min.png";
+import VolvoS60 from "./img/Png/Cars/Volvo S60-min.png";
+import Mercedes from "./img/Png/Cars/Mercedes-Benz C-Class-min.png";
+import Vw from "./img/Png/Cars/Vw golf 6-min.png";
 import Context from "../context/Context";
-
+import Loading from "./Loading";
 const ReservationTab = React.forwardRef((props, ref) => {
   const context = useContext(Context);
-  const { Reservation_data, cancelReservation } = context;
+  const { Reservation_data, cancelReservation, loading } = context;
   const cars = {
     AudiA4: AudiA4,
     LexusES: LexusES,
@@ -50,6 +50,9 @@ const ReservationTab = React.forwardRef((props, ref) => {
           ></i>
           <h2 className="primary-heading">Reservations</h2>
         </div>
+        {loading === "true" && (
+          <Loading loading={loading} padding={3}></Loading>
+        )}
 
         {Reservation_data &&
           Reservation_data.map((resrv, id, key) => {

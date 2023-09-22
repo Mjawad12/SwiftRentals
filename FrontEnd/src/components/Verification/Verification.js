@@ -3,26 +3,32 @@ import { useContext, useRef } from "react";
 import Context from "../../context/Context";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading";
 
 export default function Verification() {
   const [err1, seterr1] = useState("");
   const navigate = useNavigate();
   const context = useContext(Context);
-  const { otp, verifyOtp, clientEmail, setotpverifier } = context;
+  const { otp, verifyOtp, clientEmail, setotpverifier, loading, setloading } =
+    context;
   const enteredOTP = useRef("");
   const handleOTP = async () => {
-    if (enteredOTP.current.value == otp) {
-      await verifyOtp(clientEmail)
-        .then(() => {
-          navigate("/");
-          setotpverifier("NO");
-        })
-        .catch((error) => {
-          seterr1(error.message);
-        });
-    } else {
-      seterr1("Wrong otp");
-    }
+    setloading("true");
+    setTimeout(async () => {
+      if (enteredOTP.current.value == otp) {
+        await verifyOtp(clientEmail)
+          .then(() => {
+            navigate("/");
+            setotpverifier("NO");
+          })
+          .catch((error) => {
+            seterr1(error.message);
+          });
+      } else {
+        seterr1("Wrong otp");
+      }
+      setloading("false");
+    }, 700);
   };
 
   return (
@@ -36,7 +42,7 @@ export default function Verification() {
               Rentals
             </h2>
             <p className="text-centre fs-300 ff-cubic">
-              Enter the OTP sent to your mail.
+              Enter the OTP sent to your email.
             </p>
             <div className="inputs_div | even-columns opposite-columns">
               <input
@@ -51,6 +57,9 @@ export default function Verification() {
                 </p>
               )}
             </div>
+            {loading === "true" && (
+              <Loading loading={loading} padding={1}></Loading>
+            )}
             <button className="button" onClick={handleOTP}>
               Enter OTP
             </button>
