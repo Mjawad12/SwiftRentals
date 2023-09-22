@@ -32,7 +32,7 @@ This project is a full-stack web application designed to showcase my skills in w
 
 - <h2>Server-Side Logic:</h2> The backend of the application contains server-side logic for handling user authentication, reservation creation, and management. It also calculates booking prices based on user selections.
 
--<h2>Sending Otp Email:</h2> The app is also capable to send email to users which consist of an OTP code to authenticate users.
+- <h2>Sending Otp Emails:</h2> The app is also capable to send email to users which consist of an OTP code to authenticate users.
 
 
 ## Demo
