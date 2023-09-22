@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../App.css";
 import Audi from "./img/Png/Cars/Audi A4-min.png";
 import Lexus from "./img/Png/Cars/Lexus ES-min.png";
@@ -7,11 +7,16 @@ import Volvo from "./img/Png/Cars/Volvo S60-min.png";
 import Vw from "./img/Png/Cars/Vw golf 6-min.png";
 import cardata from "./cars.json";
 import { useState } from "react";
+import Loading from "./Loading";
+import Context from "../context/Context";
 export default function VehiclesModel() {
+  const context = useContext(Context);
+  const { loading, setloading } = context;
   const [car] = useState(cardata);
   const [carname, setcarname] = useState("AudiA4");
   const [carimg, setcarimg] = useState(Audi);
   const HandleClick = (e) => {
+    setloading("true");
     if (e.target.textContent === "Audi S1 Line") {
       setcarimg(Audi);
       setcarname("AudiA4");
@@ -28,6 +33,9 @@ export default function VehiclesModel() {
       setcarimg(Vw);
       setcarname("VWgolf");
     }
+    setTimeout(() => {
+      setloading("false");
+    }, 1000);
   };
   const HandleClick2 = () => {
     window.scrollTo(0, 800);
@@ -61,7 +69,11 @@ export default function VehiclesModel() {
           </button>
         </div>
         <div className="imgDiv">
-          <img src={carimg} alt=""></img>
+          {loading === "true" ? (
+            <Loading loading={loading} padding={3}></Loading>
+          ) : (
+            <img src={carimg} alt=""></img>
+          )}
         </div>
         <div className="tb | even-columns opposite-columns">
           <div className="grid-table">
