@@ -70,7 +70,7 @@ This project is a full-stack web application designed to showcase my skills in w
 ## Why Hire Me?
 I'm not just a developer; I'm a problem solver and a creative thinker. I believe in continuous learning and staying updated with the latest trends and technologies in web development. I'm committed to delivering high-quality work and meeting project deadlines.
 
-##Let's Connect:
+## Let's Connect:
 
 I'm open to exciting opportunities in web development and eager to contribute my skills to your team or project. If you're interested in collaborating or want to discuss potential opportunities, please don't hesitate to reach out. You can contact me at workingofficial156@gmail.com .
 
