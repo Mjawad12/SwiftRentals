@@ -46,7 +46,7 @@ export default function Intro() {
   };
   return (
     <>
-      <section className="main margin-top-600 padding-block-900">
+      <section className="main padding-block-900">
         <div className="even-columns even-columns-mob">
           <div className="Hero | even-columns opposite-columns">
             <p className="text">Plan your Trip Now!</p>
