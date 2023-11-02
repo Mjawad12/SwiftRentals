@@ -423,6 +423,9 @@ i {
 
 section.main {
   position: relative;
+  min-height: 70vh;
+  align-items: center;
+  justify-content: center;
 }
 section.main h1 {
   max-width: 20ch;
@@ -432,14 +435,11 @@ section.main p.text {
   font-weight: 400;
   font-size: var(--size-400);
 }
-section.main img {
-  max-width: max-content;
-  max-width: 80%;
-  width: 66%;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0%;
+
+.mainWrapper {
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 .Hero {
   gap: 1.3rem;

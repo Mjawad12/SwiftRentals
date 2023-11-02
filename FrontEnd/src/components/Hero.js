@@ -46,8 +46,8 @@ export default function Intro() {
   };
   return (
     <>
-      <section className="main padding-block-900">
-        <div className="even-columns even-columns-mob">
+      <section className="main even-columns ">
+        <div className="mainWrapper |   even-columns even-columns-mob">
           <div className="Hero | even-columns opposite-columns">
             <p className="text">Plan your Trip Now!</p>
             <h1 className="primary-heading">
@@ -77,7 +77,7 @@ export default function Intro() {
                   onMouseOver={HandleMouseOver}
                   onMouseLeave={HandleMouseLeave}
                 >
-                  Sign in{"    "}
+                  Sign in
                   <i ref={b2} className="fa-solid fa-arrow-right fa-beat"></i>
                 </button>
               </Link>

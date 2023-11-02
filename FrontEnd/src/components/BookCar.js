@@ -66,10 +66,7 @@ export default function BookCar() {
 
   return (
     <>
-      <div
-        id="Book"
-        className="even-columns opposite-columns margin-top-max margin-bottom-900"
-      >
+      <div id="Book" className="even-columns opposite-columns ">
         <h2 className="secondary-heading text-primary-color">Book a Car</h2>
         <Alert show={showAlert} setshow={setshowAlert}></Alert>
         <div className="form | grid-even ">
