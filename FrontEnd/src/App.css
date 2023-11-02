@@ -520,6 +520,7 @@ section.main p.text {
   padding: var(--size-900) 1rem;
   border-radius: 1rem;
   box-shadow: 1px 1px 20px #202126;
+  flex-direction: column;
 }
 #Book label {
   font-family: var(--ff-text);
