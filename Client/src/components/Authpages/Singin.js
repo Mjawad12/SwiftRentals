@@ -73,12 +73,8 @@ export default function Singin() {
           templateParams,
           "fsNlf011wAWaX2zIF"
         )
-        .then(() => {
-          console.log("success");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .then(() => {})
+        .catch(() => {});
       setotpverifier("NO");
     } // eslint-disable-next-line
   }, [otpverifier]);
@@ -102,7 +98,6 @@ export default function Singin() {
       );
       await data.json().then((result) => {
         setloading("true");
-        console.log(result);
         signin(result.email, process.env.REACT_APP_PASSWORD);
       });
     },

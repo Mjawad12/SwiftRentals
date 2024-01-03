@@ -73,12 +73,8 @@ export default function Signup() {
           templateParams,
           "fsNlf011wAWaX2zIF"
         )
-        .then(() => {
-          console.log("success");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        .then(() => {})
+        .catch(() => {});
       setotpverifier("NO");
     }
   }, [otpverifier]);

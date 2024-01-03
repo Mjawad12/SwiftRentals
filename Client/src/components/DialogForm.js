@@ -93,13 +93,8 @@ const DialogForm = React.forwardRef((props, ref) => {
           templateParams,
           "fsNlf011wAWaX2zIF"
         )
-        .then(() => {
-          console.log("success");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      console.log("hello");
+        .then(() => {})
+        .catch(() => {});
       HandleClose();
       props.SetAlert({ msg: Reservation.msg });
       setReservation("");
