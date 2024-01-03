@@ -1,0 +1,34 @@
+{
+  "team": [
+    {
+      "name": "Sara Smith",
+      "role": "CEO",
+      "gender": "Male"
+    },
+    {
+      "name": "Emily Johnson",
+      "role": "COO",
+      "gender": "Female"
+    },
+    {
+      "name": "Ayesha Davis",
+      "role": "Customer Support Lead",
+      "gender": "Male"
+    },
+    {
+      "name": "Alex Turner",
+      "role": "CTO",
+      "gender": "Male"
+    },
+    {
+      "name": "Daniel Williams",
+      "role": "Software Engineer",
+      "gender": "Male"
+    },
+    {
+      "name": "Matthew Thompson",
+      "role": "Marketing Specialist",
+      "gender": "Male"
+    }
+  ]
+}

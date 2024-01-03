@@ -1,0 +1,56 @@
+{
+  "AudiA4": {
+    "mark": "Audi",
+    "Model": "A4",
+    "year": 2023,
+    "numberOfDoors": 4,
+    "AC": "YES",
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "rentPerCent": "$25"
+  },
+
+  "VolvoS60": {
+    "Model": "S60",
+    "mark": "Volvo",
+    "year": 2023,
+    "numberOfDoors": 4,
+    "AC": "YES",
+    "transmission": "Automatic",
+    "fuel": "Hybrid",
+    "rentPerCent": "$22"
+  },
+
+  "VWgolf": {
+    "mark": "Volkswagen",
+    "Model": "Golf 6",
+    "year": 2012,
+    "numberOfDoors": 5,
+    "AC": "YES",
+    "transmission": "Manual",
+    "fuel": "Diesel",
+    "rentPerCent": "$18"
+  },
+
+  "LexusES": {
+    "mark": "Lexus",
+    "Model": "ES",
+    "year": 2022,
+    "numberOfDoors": 4,
+    "AC": "YES",
+    "transmission": "Automatic",
+    "fuel": "Petrol",
+    "rentPerCent": "$20"
+  },
+
+  "Mercedes": {
+    "mark": "Mercedes-Benz",
+    "Model": "C-Class",
+    "year": 2023,
+    "numberOfDoors": 4,
+    "AC": "YES",
+    "transmission": "Automatic",
+    "fuel": "Electric",
+    "rentPerCent": "$28"
+  }
+}
