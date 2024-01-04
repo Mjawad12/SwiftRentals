@@ -1750,6 +1750,7 @@ i#Totop {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  padding-block: 0.5rem;
 }
 
 .card h2 {
